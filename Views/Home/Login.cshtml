@@ -16,6 +16,15 @@
             padding-top: 2em;
         }
     </style>
+    <script type="text/javascript">
+        $(function () {
+            @if (Model != null && !string.IsNullOrEmpty(Model.Message))
+            {
+                @:alert('@Model.Message');
+            }
+        });
+
+    </script>
 </head>
 <body>
     <div style="text-align:center;margin:auto;" class="padtop">
@@ -25,12 +34,12 @@
                 <div class="padtop">
                     <label asp-for="Acc"></label>
                     <input asp-for="Acc" />
-                    <span asp-validation-for="Acc"></span>
+                    <span asp-validation-for="Acc" style="color:red"></span>
                 </div>
                 <div class="padtop">
                     <label asp-for="Pass"></label>
                     <input asp-for="Pass" />
-                    <span asp-validation-for="Pass"></span>
+                    <span asp-validation-for="Pass" style="color:red"></span>
                 </div>
                 <div id="html_element" style="display:flex;justify-content: center;" class="padtop"></div>
                 <div class="padtop">

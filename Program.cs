@@ -1,3 +1,4 @@
+using DotNet6WebApp.Service;
 using DotNet6WebApp.Business;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,6 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//GoogleCaptcha
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+builder.Services.AddTransient(typeof(GoogleReCaptchaService));
 
 builder.Services.AddDbContext<SQL_TestContext>(options =>
 {

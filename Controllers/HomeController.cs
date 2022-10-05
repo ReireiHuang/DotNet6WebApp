@@ -1,4 +1,5 @@
-﻿using DotNet6WebApp.Business;
+﻿using DotNet6WebApp.Service;
+using DotNet6WebApp.Business;
 using DotNet6WebApp.DBModels;
 using DotNet6WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +12,13 @@ namespace DotNet6WebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly SQL_TestContext _context;
+        private readonly GoogleReCaptchaService _captchaService;
 
-        public HomeController(ILogger<HomeController> logger, SQL_TestContext context)
+        public HomeController(ILogger<HomeController> logger, SQL_TestContext context, GoogleReCaptchaService captchaService)
         {
             _logger = logger;
             _context = context;
+            _captchaService = captchaService;
         }
 
         public IActionResult Index()
@@ -25,16 +28,32 @@ namespace DotNet6WebApp.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            LoginViewModel loginModel = new LoginViewModel() { GoogleSiteKey = _context.DbconfigSetting.Where(x => x.Id == 1).FirstOrDefault().Value };
+            return View(loginModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
+            //backend verify
             if (!ModelState.IsValid)
             {
                 login.Message = "Please Confirm column is filled";
-                return View();
+                return View(login);
+            }
+
+            if (Request.Form["g-recaptcha-response"] == "")
+            {
+                login.Message = "Please Confirm Not Robot";
+                return View(login);
+            }
+
+            var captchaResult = await _captchaService.VerifyToken(Request.Form["g-recaptcha-response"].ToString());
+
+            if (!captchaResult)
+            {
+                login.Message = "CaptchAuth Fail";
+                return View(login);
             }
 
             Users User = _context.Users.Where(x => x.Acc == login.Acc).SingleOrDefault();

@@ -1,4 +1,5 @@
-﻿using Microsoft.Build.Framework;
+﻿using DotNet6WebApp.Service;
+using Microsoft.Build.Framework;
 
 namespace DotNet6WebApp.ViewModels
 {
@@ -9,5 +10,6 @@ namespace DotNet6WebApp.ViewModels
         [Required]
         public string Pass { get; set; }
         public string? Message { get; set; }
+        public string GoogleSiteKey { get; set; }
     }
 }

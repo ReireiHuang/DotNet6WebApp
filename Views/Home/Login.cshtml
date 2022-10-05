@@ -1,4 +1,5 @@
 ﻿@model DotNet6WebApp.ViewModels.LoginViewModel
+
 @{
     Layout = null;
 }
@@ -23,6 +24,11 @@
                 @:alert('@Model.Message');
             }
         });
+        var onloadCallback = function () {
+            grecaptcha.render('html_element', {
+                'sitekey': '@Model.GoogleSiteKey',
+            });
+        };
 
     </script>
 </head>
@@ -41,6 +47,7 @@
                     <input asp-for="Pass" />
                     <span asp-validation-for="Pass" style="color:red"></span>
                 </div>
+                <input type="hidden" asp-for="GoogleSiteKey" />
                 <div id="html_element" style="display:flex;justify-content: center;" class="padtop"></div>
                 <div class="padtop">
                     <input type="submit" value="Login" />

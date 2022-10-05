@@ -1,4 +1,4 @@
-namespace DotNet6WebApp.Models
+namespace DotNet6WebApp.ViewModels
 {
     public class ErrorViewModel
     {

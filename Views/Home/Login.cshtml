@@ -1,0 +1,44 @@
+﻿@model DotNet6WebApp.ViewModels.LoginViewModel
+@{
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BillWebTest</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BillWebTest.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.js"> </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <style type="text/css">
+        .padtop {
+            padding-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;margin:auto;" class="padtop">
+        <h1>Login</h1>
+        <div>
+            <form asp-action="Login">
+                <div class="padtop">
+                    <label asp-for="Acc"></label>
+                    <input asp-for="Acc" />
+                    <span asp-validation-for="Acc"></span>
+                </div>
+                <div class="padtop">
+                    <label asp-for="Pass"></label>
+                    <input asp-for="Pass" />
+                    <span asp-validation-for="Pass"></span>
+                </div>
+                <div id="html_element" style="display:flex;justify-content: center;" class="padtop"></div>
+                <div class="padtop">
+                    <input type="submit" value="Login" />
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+

@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DotNet6WebApp.Models
+namespace DotNet6WebApp.DBModels
 {
     public partial class Users
     {

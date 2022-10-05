@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DotNet6WebApp.Business;
-using DotNet6WebApp.Models;
+using DotNet6WebApp.DBModels;
 
 namespace DotNet6WebApp.Controllers
 {

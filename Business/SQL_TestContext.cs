@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using DotNet6WebApp.Models;
+using DotNet6WebApp.DBModels;
 
 namespace DotNet6WebApp.Business
 {

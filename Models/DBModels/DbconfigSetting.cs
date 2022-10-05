@@ -3,13 +3,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace DotNet6WebApp.Models
+namespace DotNet6WebApp.DBModels
 {
-    public partial class UsersLoginRecord
+    public partial class DbconfigSetting
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public string Action { get; set; }
-        public DateTime? CreateDate { get; set; }
+        public string Description { get; set; }
+        public string Value { get; set; }
     }
 }

@@ -2,6 +2,6 @@
 {
     public class AppSettings
     {
-        public string WeatherAPIKey { get;set; }
+        public string TestKey { get;set; }
     }
 }
